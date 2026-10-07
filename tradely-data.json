@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": "user_1791239296535_d47cc6d6fb32",
+      "phone": "+233599268723",
+      "passwordHash": "$2b$12$.eOjeljRZO6nC8ixebGeY.Ry7e6vQC0uziRCTYHtJgUfkps9phDFS",
+      "balance": 0,
+      "totalDeposited": 0,
+      "totalRewardsReceived": 0,
+      "positions": [],
+      "createdAt": "2026-10-05T22:28:16.536Z",
+      "updatedAt": "2026-10-05T22:28:16.692Z"
+    }
+  ],
+  "transactions": [],
+  "processedWebhooks": []
+}

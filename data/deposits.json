@@ -1,0 +1,26 @@
+[
+  {
+    "id": "a67eb02e-ecfe-4605-a78a-ec6ed9a830fa",
+    "userId": "91dbf64c-9c26-43b6-9fc6-96bde384bccc",
+    "requestedAmount": 500,
+    "network": "TRC20",
+    "address": "TMaegWWAYEG8ShSZQD3n5VgG6Jn7znwUew",
+    "status": "pending",
+    "createdAt": "2026-10-03T02:51:17.981Z",
+    "completedAt": null,
+    "transactionHash": null,
+    "verifiedAmount": null
+  },
+  {
+    "id": "149c97bc-4ef9-424d-bbff-17e726867305",
+    "userId": "91dbf64c-9c26-43b6-9fc6-96bde384bccc",
+    "requestedAmount": 500,
+    "network": "TRC20",
+    "address": "TMaegWWAYEG8ShSZQD3n5VgG6Jn7znwUew",
+    "status": "pending",
+    "createdAt": "2026-10-03T03:17:27.397Z",
+    "completedAt": null,
+    "transactionHash": null,
+    "verifiedAmount": null
+  }
+]

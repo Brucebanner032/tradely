@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080b14"
+  >
+
+  <meta
+    name="description"
+    content="Tradely — markets and trading"
+  >
+
+  <title>Tradely</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/intl-tel-input@26.8.1/dist/css/intlTelInput.css"
+  >
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       AUTH SCREEN
+       ===================================================== -->
+
+  <section id="authScreen" class="auth-screen">
+
+    <div class="auth-brand">
+      <div class="brand-mark">T</div>
+      <div>
+        <strong>Tradely</strong>
+        <span>Markets & Trading</span>
+      </div>
+    </div>
+
+    <div class="auth-card">
+
+      <!-- LOGIN -->
+
+      <div id="loginPanel">
+
+        <div class="auth-heading">
+          <span class="eyebrow">WELCOME BACK</span>
+          <h1>Sign in to Tradely</h1>
+          <p>Access your markets, positions and account.</p>
+        </div>
+
+        <form id="loginForm">
+
+          <label for="loginPhone">Phone number</label>
+
+          <input
+            id="loginPhone"
+            type="tel"
+            autocomplete="tel"
+            placeholder="Phone number"
+            required
+          >
+
+          <label for="loginPassword">Password</label>
+
+          <input
+            id="loginPassword"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Password"
+            required
+          >
+
+          <button
+            type="submit"
+            class="primary-button full-width"
+          >
+            Sign In
+          </button>
+
+          <p id="loginMessage" class="form-message"></p>
+
+        </form>
+
+        <div class="auth-switch">
+          <span>Don't have an account?</span>
+
+          <button
+            type="button"
+            id="showRegisterButton"
+            class="text-button"
+          >
+            Create account
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- REGISTER -->
+
+      <div id="registerPanel" class="hidden">
+
+        <div class="auth-heading">
+          <span class="eyebrow">GET STARTED</span>
+          <h1>Create your account</h1>
+          <p>Open your Tradely account and start exploring markets.</p>
+        </div>
+
+        <form id="registerForm">
+
+          <label for="registerName">Full name</label>
+
+          <input
+            id="registerName"
+            type="text"
+            autocomplete="name"
+            placeholder="Your full name"
+            required
+          >
+
+          <label for="registerPhone">Phone number</label>
+
+          <input
+            id="registerPhone"
+            type="tel"
+            autocomplete="tel"
+            placeholder="Phone number"
+            required
+          >
+
+          <label for="registerPassword">Password</label>
+
+          <input
+            id="registerPassword"
+            type="password"
+            autocomplete="new-password"
+            placeholder="Create a password"
+            minlength="6"
+            required
+          >
+
+          <button
+            type="submit"
+            class="primary-button full-width"
+          >
+            Create Account
+          </button>
+
+          <p id="registerMessage" class="form-message"></p>
+
+        </form>
+
+        <div class="auth-switch">
+          <span>Already have an account?</span>
+
+          <button
+            type="button"
+            id="showLoginButton"
+            class="text-button"
+          >
+            Sign in
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="auth-footer">
+      <span>© 2026 Tradely</span>
+      <span>Markets · Positions · Portfolio</span>
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MAIN APP
+       ===================================================== -->
+
+  <div class="app" style="display:none;">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-brand">
+
+        <div class="brand-mark">T</div>
+
+        <div class="brand-copy">
+          <strong>Tradely</strong>
+          <span>Markets & Trading</span>
+        </div>
+
+      </div>
+
+
+      <nav class="sidebar-nav">
+
+        <button
+          class="nav-item active"
+          data-page="home"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Home</span>
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="markets"
+        >
+          <span class="nav-icon">↗</span>
+          <span>Markets</span>
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="portfolio"
+        >
+          <span class="nav-icon">▥</span>
+          <span>Portfolio</span>
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="wallet"
+        >
+          <span class="nav-icon">◈</span>
+          <span>Wallet</span>
+        </button>
+
+        <button
+          class="nav-item"
+          data-page="bonuses"
+        >
+          <span class="nav-icon">✦</span>
+          <span>Rewards</span>
+        </button>
+
+      </nav>
+
+
+      <div class="sidebar-bottom">
+
+        <div class="sidebar-balance">
+
+          <span>Available Balance</span>
+
+          <strong id="cash">$0.00</strong>
+
+        </div>
+
+        <button
+          type="button"
+          class="logout-button"
+          onclick="logoutUser()"
+        >
+          <span>↪</span>
+          Log out
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+      <!-- TOPBAR -->
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            type="button"
+            id="mobileMenuButton"
+            class="mobile-menu-button"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+
+          <div>
+            <span class="topbar-label">TRADING</span>
+            <h2 id="pageTitle">Home</h2>
+          </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+          <div class="topbar-balance">
+
+            <span>Balance</span>
+
+            <strong id="topbarCash">$0.00</strong>
+
+          </div>
+
+          <div class="profile-circle" id="profileInitial">
+            T
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <!-- =================================================
+           HOME
+           ================================================= -->
+
+      <section
+        id="page-home"
+        class="page active-page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+            <span class="eyebrow">OVERVIEW</span>
+            <h1>Welcome back<span id="homeUserName"></span></h1>
+            <p>Track markets, manage positions and follow your portfolio.</p>
+          </div>
+
+          <button
+            type="button"
+            class="primary-button"
+            onclick="showPage('markets')"
+          >
+            Explore Markets
+          </button>
+
+        </div>
+
+
+        <!-- ELON FEATURE CARD -->
+
+        <article class="elon-card">
+
+          <div class="elon-image-wrap">
+
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/1/17/Elon_Musk.jpg"
+              alt="Elon Musk"
+              class="elon-image"
+            >
+
+            <div class="elon-image-overlay"></div>
+
+          </div>
+
+          <div class="elon-content">
+
+            <span class="eyebrow">FEATURED</span>
+
+            <h2>Elon Musk</h2>
+
+            <p class="elon-subtitle">
+              Technology, mobility and aerospace markets
+            </p>
+
+            <p class="elon-description">
+              Explore markets connected to some of the most recognised
+              technology companies and products associated with Elon Musk.
+            </p>
+
+            <div class="elon-tags">
+
+              <span>Tesla</span>
+              <span>SpaceX</span>
+              <span>Starlink</span>
+              <span>xAI</span>
+              <span>Neuralink</span>
+
+            </div>
+
+            <button
+              type="button"
+              class="elon-button"
+              onclick="showPage('markets')"
+            >
+              Explore Markets
+              <span>→</span>
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- ACCOUNT CARDS -->
+
+        <div class="section-heading">
+
+          <div>
+            <span class="eyebrow">ACCOUNT</span>
+            <h2>Your Account</h2>
+          </div>
+
+        </div>
+
+        <div class="account-grid">
+
+          <article class="account-card">
+
+            <div class="account-card-icon blue">
+              $
+            </div>
+
+            <div>
+
+              <span>Available Balance</span>
+
+              <strong id="homeCash">$0.00</strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="account-card">
+
+            <div class="account-card-icon purple">
+              ◈
+            </div>
+
+            <div>
+
+              <span>Portfolio Value</span>
+
+              <strong id="homePortfolio">$0.00</strong>
+
+            </div>
+
+          </article>
+
+
+          <article class="account-card">
+
+            <div class="account-card-icon green">
+              ↗
+            </div>
+
+            <div>
+
+              <span>Active Positions</span>
+
+              <strong id="homePositions">0</strong>
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <!-- POPULAR MARKETS -->
+
+        <div class="section-heading market-heading">
+
+          <div>
+            <span class="eyebrow">MARKETS</span>
+            <h2>Popular Markets</h2>
+          </div>
+
+          <button
+            type="button"
+            class="outline-button"
+            onclick="showPage('markets')"
+          >
+            View All
+          </button>
+
+        </div>
+
+        <div
+          id="marketPreview"
+          class="market-grid preview-grid"
+        ></div>
+
+
+        <!-- TRADING TERMS -->
+
+        <div class="section-heading terms-heading">
+
+          <div>
+            <span class="eyebrow">TRADING</span>
+            <h2>Trading Terms</h2>
+          </div>
+
+        </div>
+
+        <div class="terms-grid">
+
+          <article class="term-card">
+
+            <div class="term-icon">48H</div>
+
+            <div>
+              <h3>48 Hours</h3>
+              <p>Short-term position</p>
+            </div>
+
+          </article>
+
+
+          <article class="term-card">
+
+            <div class="term-icon">2M</div>
+
+            <div>
+              <h3>2 Months</h3>
+              <p>Long-term position</p>
+            </div>
+
+          </article>
+
+
+          <article class="term-card">
+
+            <div class="term-icon">3M</div>
+
+            <div>
+              <h3>3 Months</h3>
+              <p>Long-term position</p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           MARKETS
+           ================================================= -->
+
+      <section
+        id="page-markets"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+            <span class="eyebrow">MARKETS</span>
+            <h1>Explore Markets</h1>
+            <p>Follow prices and open positions across available markets.</p>
+          </div>
+
+        </div>
+
+
+        <div class="market-intro-card">
+
+          <div class="market-intro-icon">↗</div>
+
+          <div>
+
+            <h3>Market Opportunities</h3>
+
+            <p>
+              Browse available markets and choose a position duration
+              that suits your strategy.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="marketList"
+          class="market-grid"
+        ></div>
+
+
+        <div class="section-heading terms-heading">
+
+          <div>
+            <span class="eyebrow">DURATION</span>
+            <h2>Available Trading Terms</h2>
+          </div>
+
+        </div>
+
+
+        <div class="terms-grid">
+
+          <article class="term-card featured-term">
+
+            <div class="term-icon">48H</div>
+
+            <div>
+              <h3>48 Hours</h3>
+              <p>Short-term position</p>
+            </div>
+
+          </article>
+
+
+          <article class="term-card">
+
+            <div class="term-icon">2M</div>
+
+            <div>
+              <h3>2 Months</h3>
+              <p>Long-term position</p>
+            </div>
+
+          </article>
+
+
+          <article class="term-card">
+
+            <div class="term-icon">3M</div>
+
+            <div>
+              <h3>3 Months</h3>
+              <p>Long-term position</p>
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           PORTFOLIO
+           ================================================= -->
+
+      <section
+        id="page-portfolio"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+            <span class="eyebrow">PORTFOLIO</span>
+            <h1>Your Portfolio</h1>
+            <p>Monitor your active and completed positions.</p>
+          </div>
+
+        </div>
+
+
+        <div class="portfolio-summary">
+
+          <article class="portfolio-summary-card">
+
+            <span>Available Balance</span>
+
+            <strong id="portfolioCash">$0.00</strong>
+
+          </article>
+
+
+          <article class="portfolio-summary-card">
+
+            <span>Portfolio Value</span>
+
+            <strong id="portfolioTotal">$0.00</strong>
+
+          </article>
+
+        </div>
+
+
+        <div class="section-heading">
+
+          <div>
+            <span class="eyebrow">POSITIONS</span>
+            <h2>Your Positions</h2>
+          </div>
+
+        </div>
+
+
+        <div
+          id="portfolioList"
+          class="portfolio-list"
+        ></div>
+
+      </section>
+
+
+      <!-- =================================================
+           WALLET
+           ================================================= -->
+
+      <section
+        id="page-wallet"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+            <span class="eyebrow">WALLET</span>
+            <h1>Your Wallet</h1>
+            <p>Manage your Tradely USD balance.</p>
+          </div>
+
+        </div>
+
+
+        <div class="wallet-balance-card">
+
+          <div>
+
+            <span>Available Balance</span>
+
+            <strong id="walletCash">$0.00</strong>
+
+          </div>
+
+          <div class="wallet-balance-icon">
+            $
+          </div>
+
+        </div>
+
+
+        <div class="wallet-layout">
+
+          <!-- DEPOSIT -->
+
+          <div class="wallet-card">
+
+            <div class="wallet-card-heading">
+
+              <div>
+                <span class="eyebrow">DEPOSIT</span>
+                <h2>Add Funds</h2>
+              </div>
+
+            </div>
+
+
+            <form id="depositForm">
+
+              <div class="form-group">
+
+                <label for="amount">Amount</label>
+
+                <div class="amount-input-wrap">
+
+                  <span>$</span>
+
+                  <input
+                    id="amount"
+                    type="number"
+                    min="500"
+                    step="0.01"
+                    placeholder="500.00"
+                    required
+                  >
+
+                </div>
+
+                <small>Minimum deposit: 500 USDT</small>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="depositNetwork">Network</label>
+
+                <select id="depositNetwork" required>
+
+                  <option value="TRC20">
+                    USDT — TRC20
+                  </option>
+
+                  <option value="BEP20">
+                    USDT — BEP20
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="primary-button full-width"
+              >
+                Continue Deposit
+              </button>
+
+              <p
+                id="walletMessage"
+                class="form-message"
+              ></p>
+
+            </form>
+
+
+            <div
+              id="depositDetails"
+              class="deposit-details hidden"
+            >
+
+              <div class="deposit-detail-header">
+
+                <div>
+                  <span class="eyebrow">PAYMENT DETAILS</span>
+                  <h3>Send USDT</h3>
+                </div>
+
+                <span
+                  id="depositStatus"
+                  class="status-badge pending"
+                >
+                  Pending
+                </span>
+
+              </div>
+
+
+              <div class="deposit-info-grid">
+
+                <div class="deposit-info-box">
+
+                  <span>Network</span>
+
+                  <strong id="depositNetworkDisplay">
+                    TRC20
+                  </strong>
+
+                </div>
+
+
+                <div class="deposit-info-box">
+
+                  <span>Amount</span>
+
+                  <strong id="depositAmountDisplay">
+                    $0.00
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <div class="deposit-address-box">
+
+                <div>
+
+                  <span>Deposit Address</span>
+
+                  <strong id="depositAddress">
+                    —
+                  </strong>
+
+                </div>
+
+                <button
+                  type="button"
+                  class="copy-button"
+                  onclick="copyDepositAddress()"
+                >
+                  Copy
+                </button>
+
+              </div>
+
+
+              <div class="deposit-id-box">
+
+                <span>Deposit ID</span>
+
+                <strong id="depositId">—</strong>
+
+              </div>
+
+              <p class="deposit-note">
+                Send the exact amount using the selected network.
+                Your deposit will be checked automatically.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- HISTORY -->
+
+          <div class="wallet-card">
+
+            <div class="wallet-card-heading">
+
+              <div>
+                <span class="eyebrow">HISTORY</span>
+                <h2>Deposit History</h2>
+              </div>
+
+            </div>
+
+            <div
+              id="depositHistory"
+              class="deposit-history"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           REWARDS
+           ================================================= -->
+
+      <section
+        id="page-bonuses"
+        class="page"
+      >
+
+        <div class="page-heading">
+
+          <div>
+            <span class="eyebrow">REWARDS</span>
+            <h1>Rewards</h1>
+            <p>Choose a reward package and add its value to your balance.</p>
+          </div>
+
+        </div>
+
+
+        <div
+          id="rewardsList"
+          class="rewards-grid"
+        ></div>
+
+
+        <p
+          id="bonusMessage"
+          class="form-message"
+        ></p>
+
+      </section>
+
+    </main>
+
+
+    <!-- MOBILE NAV -->
+
+    <nav class="mobile-nav">
+
+      <button
+        class="mobile-nav-item active"
+        data-page="home"
+      >
+        <span>⌂</span>
+        <small>Home</small>
+      </button>
+
+      <button
+        class="mobile-nav-item"
+        data-page="markets"
+      >
+        <span>↗</span>
+        <small>Markets</small>
+      </button>
+
+      <button
+        class="mobile-nav-item"
+        data-page="portfolio"
+      >
+        <span>▥</span>
+        <small>Portfolio</small>
+      </button>
+
+      <button
+        class="mobile-nav-item"
+        data-page="wallet"
+      >
+        <span>◈</span>
+        <small>Wallet</small>
+      </button>
+
+      <button
+        class="mobile-nav-item"
+        data-page="bonuses"
+      >
+        <span>✦</span>
+        <small>Rewards</small>
+      </button>
+
+    </nav>
+
+  </div>
+
+
+  <!-- =====================================================
+       TRADE MODAL
+       ===================================================== -->
+
+  <dialog
+    id="tradeModal"
+    aria-labelledby="tradeModalTitle"
+  >
+
+    <div class="trade-modal-inner">
+
+      <div class="trade-modal-header">
+
+        <div>
+
+          <span
+            id="tradeModalMarket"
+            class="trade-modal-market"
+          >
+            MARKET
+          </span>
+
+          <h2 id="tradeModalTitle">
+            Open Position
+          </h2>
+
+        </div>
+
+        <button
+          type="button"
+          class="trade-modal-close"
+          onclick="closeTradeModal()"
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="trade-price-box">
+
+        <span id="tradeModalPriceLabel">
+          Current Price
+        </span>
+
+        <strong id="tradeModalPrice">
+          $0.00
+        </strong>
+
+      </div>
+
+
+      <div class="trade-balance-row">
+
+        <span>Available Balance</span>
+
+        <strong id="tradeBalanceValue">
+          $0.00
+        </strong>
+
+      </div>
+
+
+      <div class="trade-field">
+
+        <label>Position Duration</label>
+
+        <div class="trade-duration-options">
+
+          <button
+            type="button"
+            id="duration48H"
+            class="trade-duration-button active"
+            onclick="selectDuration('48H')"
+          >
+            <strong>48 Hours</strong>
+            <small>Short Term</small>
+          </button>
+
+
+          <button
+            type="button"
+            id="duration2M"
+            class="trade-duration-button"
+            onclick="selectDuration('2M')"
+          >
+            <strong>2 Months</strong>
+            <small>Long Term</small>
+          </button>
+
+
+          <button
+            type="button"
+            id="duration3M"
+            class="trade-duration-button"
+            onclick="selectDuration('3M')"
+          >
+            <strong>3 Months</strong>
+            <small>Long Term</small>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="trade-field">
+
+        <label for="tradeAmount">
+          Position Amount
+        </label>
+
+        <div class="trade-amount-wrap">
+
+          <span>$</span>
+
+          <input
+            id="tradeAmount"
+            type="number"
+            min="1"
+            step="0.01"
+            placeholder="100.00"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="tradeExpiryInfo"
+        class="trade-expiry-info"
+      >
+        Your position will mature after 48 hours.
+      </div>
+
+
+      <button
+        type="button"
+        id="confirmTradeButton"
+        class="trade-confirm-button"
+        onclick="confirmOpenPosition()"
+      >
+        Open Position
+      </button>
+
+
+      <p
+        id="tradeModalMessage"
+        class="trade-modal-message"
+      ></p>
+
+    </div>
+
+  </dialog>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@26.8.1/dist/js/intlTelInput.min.js"></script>
+  <script src="/app.js"></script>
+
+</body>
+</html>

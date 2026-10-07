@@ -1,0 +1,43 @@
+functionsDirectory = "C:\\Users\\GIDEON\\Desktop\\Tradely\\netlify\\functions"
+functionsDirectoryOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+headers = []
+
+[build]
+publish = "C:\\Users\\GIDEON\\Desktop\\Tradely"
+publishOrigin = "config"
+base = "C:\\Users\\GIDEON\\Desktop\\Tradely"
+functions = "C:\\Users\\GIDEON\\Desktop\\Tradely\\netlify\\functions"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[functions]
+
+[functions."*"]
+external_node_modules = ["express"]
+node_bundler = "esbuild"
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api/:splat"
+status = 200.0
+force = true
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]
