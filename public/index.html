@@ -743,13 +743,16 @@
 
           <!-- DEPOSIT -->
 
-          <div class="wallet-card">
+          <div class="wallet-card deposit-wallet-card">
 
             <div class="wallet-card-heading">
 
               <div>
                 <span class="eyebrow">DEPOSIT</span>
                 <h2>Add Funds</h2>
+                <p class="deposit-heading-subtitle">
+                  Deposit USDT securely using your preferred network.
+                </p>
               </div>
 
             </div>
@@ -757,11 +760,14 @@
 
             <form id="depositForm">
 
-              <div class="form-group">
+              <div class="form-group deposit-amount-group">
 
-                <label for="amount">Amount</label>
+                <div class="deposit-field-heading">
+                  <label for="amount">Deposit Amount</label>
+                  <span>USDT</span>
+                </div>
 
-                <div class="amount-input-wrap">
+                <div class="amount-input-wrap deposit-amount-input">
 
                   <span>$</span>
 
@@ -776,16 +782,63 @@
 
                 </div>
 
-                <small>Minimum deposit: 500 USDT</small>
+                <div class="quick-amounts">
+
+                  <button
+                    type="button"
+                    onclick="document.getElementById('amount').value='500'"
+                  >
+                    500
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="document.getElementById('amount').value='1000'"
+                  >
+                    1,000
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="document.getElementById('amount').value='2500'"
+                  >
+                    2,500
+                  </button>
+
+                  <button
+                    type="button"
+                    onclick="document.getElementById('amount').value='5000'"
+                  >
+                    5,000
+                  </button>
+
+                </div>
+
+                <small class="deposit-minimum">
+                  Minimum deposit: <strong>500 USDT</strong>
+                </small>
 
               </div>
 
 
-              <div class="form-group">
+              <div class="form-group deposit-network-group">
 
-                <label for="depositNetwork">Network</label>
+                <div class="deposit-field-heading">
+                  <label>Deposit Network</label>
+                  <span>USDT</span>
+                </div>
 
-                <select id="depositNetwork" required>
+                <!--
+                  The select remains in place so the existing app.js
+                  continues to work without modification.
+                -->
+
+                <select
+                  id="depositNetwork"
+                  required
+                  aria-hidden="true"
+                  tabindex="-1"
+                >
 
                   <option value="TRC20">
                     USDT — TRC20
@@ -797,14 +850,80 @@
 
                 </select>
 
+
+                <div class="network-choice-grid">
+
+                  <button
+                    type="button"
+                    class="network-choice active"
+                    data-network-choice="TRC20"
+                    onclick="
+                      document.getElementById('depositNetwork').value='TRC20';
+                      document.querySelectorAll('.network-choice').forEach(function(el){el.classList.remove('active');});
+                      this.classList.add('active');
+                    "
+                  >
+
+                    <span class="network-logo trc-logo">T</span>
+
+                    <span class="network-choice-content">
+                      <strong>TRC20</strong>
+                      <small>TRON Network</small>
+                    </span>
+
+                    <span class="network-check">✓</span>
+
+                  </button>
+
+
+                  <button
+                    type="button"
+                    class="network-choice"
+                    data-network-choice="BEP20"
+                    onclick="
+                      document.getElementById('depositNetwork').value='BEP20';
+                      document.querySelectorAll('.network-choice').forEach(function(el){el.classList.remove('active');});
+                      this.classList.add('active');
+                    "
+                  >
+
+                    <span class="network-logo bep-logo">B</span>
+
+                    <span class="network-choice-content">
+                      <strong>BEP20</strong>
+                      <small>BNB Smart Chain</small>
+                    </span>
+
+                    <span class="network-check">✓</span>
+
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div class="deposit-security-note">
+
+                <span class="deposit-security-icon">✓</span>
+
+                <div>
+                  <strong>USDT deposit</strong>
+                  <span>
+                    Make sure the selected network matches the network
+                    you use when sending USDT.
+                  </span>
+                </div>
+
               </div>
 
 
               <button
                 type="submit"
-                class="primary-button full-width"
+                class="primary-button full-width deposit-continue-button"
               >
                 Continue Deposit
+                <span>→</span>
               </button>
 
               <p

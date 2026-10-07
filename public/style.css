@@ -82,7 +82,6 @@ button:disabled {
   display: none !important;
 }
 
-
 /* =====================================================
    AUTH
    ===================================================== */
@@ -189,7 +188,8 @@ button:disabled {
   margin-bottom: 17px;
   transition:
     border-color .18s ease,
-    box-shadow .18s ease;
+    box-shadow .18s ease,
+    background .18s ease;
 }
 
 .auth-card input:focus,
@@ -291,7 +291,6 @@ button:disabled {
   color: var(--muted-2);
   font-size: 11px;
 }
-
 
 /* =====================================================
    APP LAYOUT
@@ -497,7 +496,6 @@ button:disabled {
   color: white;
 }
 
-
 /* =====================================================
    PAGES
    ===================================================== */
@@ -561,7 +559,6 @@ button:disabled {
   background: rgba(255,255,255,.04);
   color: white;
 }
-
 
 /* =====================================================
    ELON CARD
@@ -685,7 +682,6 @@ button:disabled {
   font-size: 17px;
 }
 
-
 /* =====================================================
    ACCOUNT CARDS
    ===================================================== */
@@ -744,7 +740,6 @@ button:disabled {
   display: block;
   font-size: 21px;
 }
-
 
 /* =====================================================
    MARKET CARDS
@@ -909,7 +904,6 @@ button:disabled {
   font-size: 12px;
 }
 
-
 /* =====================================================
    TRADING TERMS
    ===================================================== */
@@ -963,7 +957,6 @@ button:disabled {
   color: var(--muted);
   font-size: 11px;
 }
-
 
 /* =====================================================
    PORTFOLIO
@@ -1106,27 +1099,48 @@ button:disabled {
   font-size: 12px;
 }
 
-
 /* =====================================================
    WALLET
    ===================================================== */
 
 .wallet-balance-card {
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 145px;
-  padding: 27px;
+  min-height: 155px;
+  padding: 30px;
   margin-bottom: 18px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
+  border: 1px solid rgba(77,125,245,.18);
+  border-radius: 20px;
   background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(77,125,245,.18),
+      transparent 35%
+    ),
     linear-gradient(
       135deg,
-      rgba(77,125,245,.14),
-      rgba(77,125,245,.03)
+      rgba(77,125,245,.15),
+      rgba(77,125,245,.025)
     ),
     var(--panel);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.15),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.wallet-balance-card::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  right: -65px;
+  top: -65px;
+  border: 1px solid rgba(77,125,245,.10);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .wallet-balance-card span {
@@ -1138,44 +1152,79 @@ button:disabled {
 
 .wallet-balance-card strong {
   font-size: 31px;
+  letter-spacing: -.7px;
 }
 
 .wallet-balance-icon {
-  width: 57px;
-  height: 57px;
+  position: relative;
+  z-index: 2;
+  width: 59px;
+  height: 59px;
   display: grid;
   place-items: center;
-  border-radius: 16px;
-  background: var(--blue);
+  border-radius: 17px;
+  background: linear-gradient(
+    145deg,
+    var(--blue),
+    #3b68db
+  );
   color: white;
   font-size: 22px;
   font-weight: 800;
+  box-shadow: 0 12px 30px rgba(77,125,245,.25);
 }
 
 .wallet-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  gap: 17px;
 }
 
 .wallet-card {
-  padding: 23px;
+  min-width: 0;
+  padding: 25px;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--panel);
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.018),
+      transparent
+    ),
+    var(--panel);
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.018);
+}
+
+.deposit-wallet-card {
+  padding: 27px;
 }
 
 .wallet-card-heading {
-  margin-bottom: 23px;
+  margin-bottom: 24px;
 }
 
 .wallet-card-heading h2 {
   margin: 5px 0 0;
   font-size: 19px;
+  letter-spacing: -.35px;
 }
 
+.deposit-heading-subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   DEPOSIT AMOUNT
+   ===================================================== */
+
 .form-group {
-  margin-bottom: 17px;
+  margin-bottom: 19px;
 }
 
 .form-group input,
@@ -1185,9 +1234,31 @@ button:disabled {
 
 .form-group small {
   display: block;
-  margin-top: 7px;
+  margin-top: 8px;
   color: var(--muted-2);
   font-size: 10px;
+}
+
+.deposit-field-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.deposit-field-heading label {
+  margin: 0;
+}
+
+.deposit-field-heading > span {
+  padding: 4px 7px;
+  border-radius: 6px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .5px;
 }
 
 .amount-input-wrap,
@@ -1198,7 +1269,7 @@ button:disabled {
 .amount-input-wrap > span,
 .trade-amount-wrap > span {
   position: absolute;
-  left: 14px;
+  left: 15px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--muted);
@@ -1208,12 +1279,271 @@ button:disabled {
 
 .amount-input-wrap input,
 .trade-amount-wrap input {
-  padding-left: 30px;
+  padding-left: 32px;
 }
 
+.amount-input-wrap input {
+  height: 57px;
+  border-radius: 13px;
+  background: #080e19;
+}
+
+.deposit-amount-input input {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.deposit-amount-input > span {
+  color: #aeb9cc;
+  font-size: 15px;
+}
+
+.quick-amounts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.quick-amounts button {
+  min-height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,.025);
+  color: #aeb8c8;
+  font-size: 10px;
+  font-weight: 700;
+  transition:
+    background .18s ease,
+    border-color .18s ease,
+    color .18s ease;
+}
+
+.quick-amounts button:hover {
+  background: var(--blue-soft);
+  border-color: rgba(77,125,245,.35);
+  color: white;
+}
+
+.deposit-minimum {
+  margin-top: 9px !important;
+}
+
+.deposit-minimum strong {
+  color: #aab6c9;
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   NETWORK SELECTION
+   ===================================================== */
+
+.deposit-network-group {
+  margin-top: 25px;
+}
+
+#depositNetwork {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.network-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.network-choice {
+  position: relative;
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.025),
+      rgba(255,255,255,.008)
+    ),
+    #080e19;
+  color: var(--text);
+  text-align: left;
+  transition:
+    border-color .18s ease,
+    background .18s ease,
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+.network-choice:hover {
+  transform: translateY(-1px);
+  border-color: rgba(77,125,245,.35);
+  background: var(--panel-2);
+}
+
+.network-choice.active {
+  border-color: rgba(77,125,245,.72);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(77,125,245,.14),
+      rgba(77,125,245,.035)
+    ),
+    #0b1220;
+  box-shadow:
+    0 0 0 1px rgba(77,125,245,.10),
+    0 10px 25px rgba(0,0,0,.12);
+}
+
+.network-logo {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.trc-logo {
+  background: rgba(235,72,72,.12);
+  color: #f07474;
+  border: 1px solid rgba(235,72,72,.18);
+}
+
+.bep-logo {
+  background: rgba(241,190,61,.12);
+  color: #eec35e;
+  border: 1px solid rgba(241,190,61,.18);
+}
+
+.network-choice-content {
+  min-width: 0;
+}
+
+.network-choice-content strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.network-choice-content small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+.network-check {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-size: 9px;
+  font-weight: 900;
+  opacity: 0;
+  transform: scale(.75);
+  transition:
+    opacity .18s ease,
+    transform .18s ease;
+}
+
+.network-choice.active .network-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* =====================================================
+   DEPOSIT SECURITY NOTE
+   ===================================================== */
+
+.deposit-security-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 20px 0 16px;
+  padding: 12px 13px;
+  border: 1px solid rgba(39,201,138,.10);
+  border-radius: 11px;
+  background: rgba(39,201,138,.045);
+}
+
+.deposit-security-icon {
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 7px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.deposit-security-note strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #c9d4e3;
+  font-size: 10px;
+}
+
+.deposit-security-note span:last-child {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+
+/* =====================================================
+   CONTINUE DEPOSIT
+   ===================================================== */
+
+#depositForm > .primary-button {
+  min-height: 51px;
+  margin-top: 2px;
+  border-radius: 12px;
+  font-size: 13px;
+  box-shadow: 0 10px 25px rgba(77,125,245,.14);
+}
+
+.deposit-continue-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.deposit-continue-button span {
+  font-size: 16px;
+  line-height: 1;
+}
+
+
+/* =====================================================
+   DEPOSIT DETAILS
+   ===================================================== */
+
 .deposit-details {
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 25px;
+  padding-top: 25px;
   border-top: 1px solid var(--border);
 }
 
@@ -1231,10 +1561,12 @@ button:disabled {
 }
 
 .status-badge {
-  padding: 6px 9px;
-  border-radius: 7px;
+  padding: 6px 10px;
+  border-radius: 8px;
   font-size: 9px;
   font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .4px;
 }
 
 .status-badge.pending {
@@ -1261,10 +1593,15 @@ button:disabled {
 
 .deposit-info-box,
 .deposit-id-box {
-  padding: 13px;
+  padding: 14px;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(255,255,255,.02);
+  border-radius: 11px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.025),
+      rgba(255,255,255,.01)
+    );
 }
 
 .deposit-info-box span,
@@ -1272,7 +1609,7 @@ button:disabled {
   display: block;
   color: var(--muted);
   font-size: 9px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .deposit-info-box strong,
@@ -1287,11 +1624,16 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 13px;
+  padding: 14px;
   margin-bottom: 9px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(77,125,245,.16);
+  border-radius: 11px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(77,125,245,.07),
+      rgba(255,255,255,.015)
+    );
 }
 
 .deposit-address-box > div {
@@ -1302,38 +1644,55 @@ button:disabled {
   display: block;
   color: var(--muted);
   font-size: 9px;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .deposit-address-box strong {
   display: block;
-  color: #cfd7e4;
+  color: #d8e0ed;
   font-size: 10px;
+  line-height: 1.55;
   word-break: break-all;
 }
 
 .copy-button {
   flex: 0 0 auto;
-  min-height: 33px;
-  padding: 0 10px;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  background: transparent;
-  color: white;
+  min-height: 35px;
+  padding: 0 12px;
+  border: 1px solid rgba(77,125,245,.28);
+  border-radius: 8px;
+  background: var(--blue-soft);
+  color: #b9caff;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
+  transition:
+    background .18s ease,
+    border-color .18s ease;
 }
 
 .copy-button:hover {
-  background: rgba(255,255,255,.05);
+  background: rgba(77,125,245,.20);
+  border-color: rgba(77,125,245,.45);
+}
+
+.deposit-id-box {
+  margin-bottom: 9px;
 }
 
 .deposit-note {
-  margin: 13px 0 0;
-  color: var(--muted);
+  margin: 14px 0 0;
+  padding: 12px 13px;
+  border-radius: 10px;
+  background: rgba(234,185,93,.055);
+  color: #a9b2c2;
   font-size: 10px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
+
+
+/* =====================================================
+   DEPOSIT HISTORY
+   ===================================================== */
 
 .deposit-history {
   display: flex;
@@ -1342,17 +1701,30 @@ button:disabled {
 }
 
 .deposit-history-empty {
-  padding: 35px 10px;
+  padding: 48px 10px;
   text-align: center;
   color: var(--muted);
   font-size: 12px;
 }
 
 .deposit-history-item {
-  padding: 13px;
+  padding: 14px;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(255,255,255,.02);
+  border-radius: 11px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.02),
+      transparent
+    );
+  transition:
+    border-color .18s ease,
+    background .18s ease;
+}
+
+.deposit-history-item:hover {
+  border-color: rgba(77,125,245,.22);
+  background: var(--panel-2);
 }
 
 .deposit-history-top {
@@ -1372,6 +1744,88 @@ button:disabled {
   margin-top: 5px;
 }
 
+
+/* =====================================================
+   RESPONSIVE DEPOSIT UI
+   ===================================================== */
+
+@media (max-width: 680px) {
+
+  .deposit-wallet-card {
+    padding: 20px;
+  }
+
+  .network-choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-amounts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wallet-balance-card {
+    min-height: 135px;
+    padding: 23px;
+  }
+
+  .wallet-balance-card strong {
+    font-size: 27px;
+  }
+
+  .wallet-balance-icon {
+    width: 51px;
+    height: 51px;
+    font-size: 19px;
+  }
+
+  .deposit-address-box {
+    align-items: flex-end;
+  }
+
+  .deposit-address-box strong {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .wallet-card {
+    padding: 18px;
+  }
+
+  .deposit-wallet-card {
+    padding: 18px;
+  }
+
+  .wallet-balance-card {
+    padding: 20px;
+  }
+
+  .wallet-balance-card strong {
+    font-size: 25px;
+  }
+
+  .deposit-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deposit-address-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .copy-button {
+    width: 100%;
+  }
+
+  .network-choice {
+    min-height: 76px;
+  }
+
+  .quick-amounts button {
+    min-height: 36px;
+  }
+}
 
 /* =====================================================
    REWARDS
@@ -1445,7 +1899,6 @@ button:disabled {
 .reward-buy-button:hover {
   background: var(--blue-hover);
 }
-
 
 /* =====================================================
    TRADE MODAL
@@ -1617,7 +2070,6 @@ button:disabled {
   font-size: 11px;
 }
 
-
 /* =====================================================
    MOBILE NAV
    ===================================================== */
@@ -1626,13 +2078,11 @@ button:disabled {
   display: none;
 }
 
-
 /* =====================================================
    RESPONSIVE
    ===================================================== */
 
 @media (max-width: 1150px) {
-
   .market-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1644,11 +2094,9 @@ button:disabled {
   .elon-card {
     grid-template-columns: 45% 55%;
   }
-
 }
 
 @media (max-width: 900px) {
-
   :root {
     --sidebar: 0px;
   }
@@ -1742,11 +2190,9 @@ button:disabled {
     background: var(--blue-soft);
     color: white;
   }
-
 }
 
 @media (max-width: 680px) {
-
   .page-heading {
     align-items: flex-start;
     flex-direction: column;
@@ -1793,10 +2239,35 @@ button:disabled {
     align-items: center;
   }
 
+  .wallet-balance-card {
+    min-height: 135px;
+    padding: 23px;
+  }
+
+  .wallet-balance-card strong {
+    font-size: 27px;
+  }
+
+  .wallet-balance-icon {
+    width: 51px;
+    height: 51px;
+    font-size: 19px;
+  }
+
+  .wallet-card {
+    padding: 20px;
+  }
+
+  .deposit-address-box {
+    align-items: flex-end;
+  }
+
+  .deposit-address-box strong {
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 450px) {
-
   .topbar {
     height: 68px;
   }
@@ -1829,4 +2300,24 @@ button:disabled {
     padding: 18px;
   }
 
+  .wallet-balance-card {
+    padding: 20px;
+  }
+
+  .wallet-balance-card strong {
+    font-size: 25px;
+  }
+
+  .deposit-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deposit-address-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .copy-button {
+    width: 100%;
+  }
 }
