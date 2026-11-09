@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #070b14;
   --bg-soft: #0b101b;
   --panel: #0d1421;
@@ -1745,22 +1745,266 @@ button:disabled {
 }
 
 
+
 /* =====================================================
-   RESPONSIVE DEPOSIT UI
+   TRADLEY DEPOSIT UI UPGRADE
    ===================================================== */
 
-@media (max-width: 680px) {
+.deposit-amount-group {
+  margin-bottom: 19px;
+}
 
-  .deposit-wallet-card {
-    padding: 20px;
+.deposit-wallet-card {
+  padding: 27px;
+}
+
+.deposit-heading-subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.deposit-field-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.deposit-field-heading label {
+  margin: 0;
+}
+
+.deposit-field-heading > span {
+  padding: 4px 7px;
+  border-radius: 6px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.amount-input-wrap input.deposit-amount-input,
+.deposit-amount-input input {
+  height: 57px;
+  padding-left: 32px;
+  border-radius: 13px;
+  background: #080e19;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.deposit-amount-input > span {
+  left: 15px;
+  color: #aeb9cc;
+  font-size: 15px;
+}
+
+.quick-amounts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.quick-amounts button {
+  min-height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,.025);
+  color: #aeb8c8;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.quick-amounts button:hover {
+  background: var(--blue-soft);
+  border-color: rgba(77,125,245,.35);
+  color: white;
+}
+
+.deposit-minimum {
+  margin-top: 9px !important;
+}
+
+.deposit-minimum strong {
+  color: #aab6c9;
+}
+
+.deposit-network-group {
+  margin-top: 25px;
+}
+
+#depositNetwork {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.network-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.network-choice {
+  position: relative;
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #080e19;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.network-choice:hover {
+  transform: translateY(-1px);
+  border-color: rgba(77,125,245,.35);
+}
+
+.network-choice.active {
+  border-color: rgba(77,125,245,.72);
+  background: rgba(77,125,245,.10);
+  box-shadow: 0 0 0 1px rgba(77,125,245,.10);
+}
+
+.network-logo {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.trc-logo {
+  background: rgba(235,72,72,.12);
+  color: #f07474;
+}
+
+.bep-logo {
+  background: rgba(241,190,61,.12);
+  color: #eec35e;
+}
+
+.network-choice-content {
+  min-width: 0;
+}
+
+.network-choice-content strong {
+  display: block;
+  font-size: 12px;
+}
+
+.network-choice-content small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.network-check {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 17px;
+  height: 17px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-size: 9px;
+  opacity: 0;
+  transform: scale(.75);
+  transition: .18s ease;
+}
+
+.network-choice.active .network-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.deposit-security-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 20px 0 16px;
+  padding: 12px 13px;
+  border: 1px solid rgba(39,201,138,.10);
+  border-radius: 11px;
+  background: rgba(39,201,138,.045);
+}
+
+.deposit-security-icon {
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 7px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.deposit-security-note strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #c9d4e3;
+  font-size: 10px;
+}
+
+.deposit-security-note span:last-child {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.deposit-continue-button {
+  min-height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.deposit-continue-button span {
+  font-size: 16px;
+}
+
+/* Responsive deposit and wallet styles */
+
+@media (max-width: 680px) {
+  .quick-amounts {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .network-choice-grid {
     grid-template-columns: 1fr;
   }
 
-  .quick-amounts {
-    grid-template-columns: repeat(2, 1fr);
+  .deposit-wallet-card {
+    padding: 20px;
   }
 
   .wallet-balance-card {
@@ -1778,6 +2022,10 @@ button:disabled {
     font-size: 19px;
   }
 
+  .wallet-card {
+    padding: 20px;
+  }
+
   .deposit-address-box {
     align-items: flex-end;
   }
@@ -1788,6 +2036,33 @@ button:disabled {
 }
 
 @media (max-width: 450px) {
+  .topbar {
+    height: 68px;
+  }
+
+  .page {
+    padding: 22px 14px;
+  }
+
+  .elon-card {
+    border-radius: 17px;
+  }
+
+  .elon-image-wrap {
+    min-height: 240px;
+  }
+
+  .elon-content {
+    padding: 22px 19px 25px;
+  }
+
+  .elon-tags span {
+    font-size: 9px;
+  }
+
+  .market-card {
+    padding: 17px;
+  }
 
   .wallet-card {
     padding: 18px;
@@ -2320,4 +2595,567 @@ button:disabled {
   .copy-button {
     width: 100%;
   }
+
+}
+
+
+
+/* =====================================================
+   TRADELY — CRYPTO WALLET REDESIGN
+   Wallet-specific styles
+   ===================================================== */
+
+.tw-wallet {
+  position: relative;
+  isolation: isolate;
+}
+
+.tw-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tw-live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid rgba(34, 197, 139, .18);
+  border-radius: 30px;
+  background: rgba(34, 197, 139, .07);
+  color: #40d9a0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tw-live-status span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #36d99a;
+  box-shadow: 0 0 12px rgba(54, 217, 154, .7);
+}
+
+/* BALANCE HERO */
+
+.tw-wallet-hero {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 225px;
+  padding: 34px 38px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(77, 125, 245, .3);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at 85% 45%,
+      rgba(77, 125, 245, .25),
+      transparent 35%
+    ),
+    linear-gradient(
+      120deg,
+      #111e3b 0%,
+      #101a32 48%,
+      #10172b 100%
+    );
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .15);
+}
+
+.tw-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.tw-muted {
+  display: block;
+  margin-bottom: 13px;
+  color: #a5b5d1;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.tw-hero-content > strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 43px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.tw-hero-content > p {
+  margin: 9px 0 19px;
+  color: #a5b5d1;
+  font-size: 12px;
+}
+
+.tw-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.tw-hero-tags span {
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .06);
+  color: #dce7ff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+/* DECORATIVE COIN */
+
+.tw-hero-decoration {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 175px;
+  height: 175px;
+  margin-right: 35px;
+  flex: 0 0 auto;
+}
+
+.tw-orbit {
+  position: absolute;
+  border: 1px solid rgba(115, 157, 255, .2);
+  border-radius: 50%;
+}
+
+.tw-orbit-one {
+  width: 145px;
+  height: 145px;
+}
+
+.tw-orbit-two {
+  width: 175px;
+  height: 175px;
+  border-style: dashed;
+}
+
+.tw-main-coin {
+  display: grid;
+  place-items: center;
+  width: 83px;
+  height: 83px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #70a5ff, #2860d7);
+  color: #fff;
+  font-size: 39px;
+  font-weight: 800;
+  box-shadow:
+    0 0 35px rgba(77, 125, 245, .4),
+    inset 0 2px 10px rgba(255, 255, 255, .2);
+}
+
+/* SECTION HEADINGS */
+
+.tw-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 30px 0 17px;
+}
+
+.tw-section-heading h2 {
+  margin: 5px 0 0;
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.tw-count {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* ASSET CARD */
+
+.tw-assets-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-bottom: 28px;
+}
+
+.tw-asset-card {
+  padding: 19px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(77, 125, 245, .08),
+      transparent
+    ),
+    var(--panel);
+  transition: border-color .2s, transform .2s;
+}
+
+.tw-asset-card:hover {
+  border-color: rgba(77, 125, 245, .4);
+  transform: translateY(-2px);
+}
+
+.tw-asset-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tw-asset-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #53d9b0, #159b77);
+  color: #fff;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.tw-asset-name {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tw-asset-name strong {
+  color: #fff;
+  font-size: 13px;
+}
+
+.tw-asset-name small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.tw-supported {
+  margin-left: auto;
+  padding: 6px 9px;
+  border-radius: 20px;
+  background: rgba(34, 197, 139, .08);
+  color: #40d9a0;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.tw-asset-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+}
+
+.tw-asset-bottom span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.tw-asset-bottom strong {
+  color: #fff;
+  font-size: 12px;
+}
+
+/* WALLET PANELS */
+
+.tw-wallet-layout {
+  align-items: start;
+  gap: 18px;
+}
+
+.tw-panel {
+  min-width: 0;
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--panel);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+}
+
+.tw-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tw-card-heading h2 {
+  margin-top: 6px;
+  font-size: 19px;
+}
+
+.tw-panel-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(77, 125, 245, .2);
+  border-radius: 12px;
+  background: rgba(77, 125, 245, .12);
+  color: #80a8ff;
+  font-size: 21px;
+}
+
+/* NETWORK NOTICE */
+
+.tw-network-notice {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  margin-bottom: 21px;
+  border: 1px solid rgba(77, 125, 245, .17);
+  border-radius: 10px;
+  background: rgba(77, 125, 245, .07);
+  color: #b8c9ed;
+  font-size: 10px;
+}
+
+.tw-network-notice span {
+  color: #55a0ff;
+  font-size: 11px;
+}
+
+/* INPUTS */
+
+.tw-panel .form-group label {
+  display: block;
+  margin-bottom: 9px;
+  color: #d9e2f3;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.tw-panel .form-group input,
+.tw-panel .form-group select {
+  min-height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background-color: #0c1425;
+  color: #fff;
+  font-size: 12px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.tw-panel .form-group input:focus,
+.tw-panel .form-group select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(77, 125, 245, .12);
+  outline: none;
+}
+
+.tw-panel .form-group small {
+  font-size: 10px;
+}
+
+.tw-amount-input input {
+  padding-left: 34px !important;
+}
+
+.tw-deposit-button {
+  min-height: 49px;
+  margin-top: 5px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.tw-deposit-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(77, 125, 245, .2);
+}
+
+.tw-deposit-button span {
+  margin-left: 6px;
+}
+
+/* PAYMENT DETAILS */
+
+.tw-payment-details {
+  padding-top: 22px;
+}
+
+.tw-payment-details .deposit-info-box,
+.tw-payment-details .deposit-id-box,
+.tw-payment-details .deposit-address-box {
+  border-radius: 11px;
+  background: rgba(77, 125, 245, .035);
+}
+
+.tw-payment-details .deposit-address-box strong {
+  line-height: 1.6;
+}
+
+.tw-payment-details .copy-button {
+  border-color: rgba(77, 125, 245, .35);
+  border-radius: 8px;
+  color: #8eb0ff;
+}
+
+.tw-payment-details .copy-button:hover {
+  background: rgba(77, 125, 245, .12);
+}
+
+/* HISTORY */
+
+.tw-history-description {
+  margin: -8px 0 19px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.tw-panel .deposit-history {
+  gap: 11px;
+}
+
+.tw-panel .deposit-history-item {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .018);
+  transition: border-color .2s, background .2s;
+}
+
+.tw-panel .deposit-history-item:hover {
+  border-color: rgba(77, 125, 245, .3);
+  background: rgba(77, 125, 245, .045);
+}
+
+.tw-panel .deposit-history-top strong {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.tw-panel .deposit-history-item small {
+  font-size: 10px;
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+
+  .tw-heading {
+    align-items: flex-start;
+  }
+
+  .tw-live-status {
+    font-size: 9px;
+    padding: 8px 10px;
+  }
+
+  .tw-wallet-hero {
+    min-height: 190px;
+    padding: 25px 22px;
+    border-radius: 17px;
+  }
+
+  .tw-hero-decoration {
+    width: 100px;
+    height: 100px;
+    margin-right: 0;
+  }
+
+  .tw-orbit-one {
+    width: 85px;
+    height: 85px;
+  }
+
+  .tw-orbit-two {
+    width: 105px;
+    height: 105px;
+  }
+
+  .tw-main-coin {
+    width: 53px;
+    height: 53px;
+    font-size: 27px;
+  }
+
+  .tw-hero-content > strong {
+    font-size: 30px;
+  }
+
+  .tw-wallet-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .tw-panel {
+    padding: 19px;
+  }
+
+}
+
+@media (max-width: 430px) {
+
+  .tw-live-status {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .tw-live-status span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .tw-wallet-hero {
+    padding: 23px 17px;
+  }
+
+  .tw-hero-content > strong {
+    font-size: 26px;
+  }
+
+  .tw-hero-decoration {
+    width: 75px;
+    height: 75px;
+  }
+
+  .tw-orbit-one {
+    width: 65px;
+    height: 65px;
+  }
+
+  .tw-orbit-two {
+    width: 80px;
+    height: 80px;
+  }
+
+  .tw-main-coin {
+    width: 44px;
+    height: 44px;
+    font-size: 23px;
+  }
+
+  .tw-hero-tags {
+    gap: 5px;
+  }
+
+  .tw-hero-tags span {
+    padding: 6px;
+    font-size: 8px;
+  }
+
+  .tw-section-heading h2 {
+    font-size: 17px;
+  }
+
 }

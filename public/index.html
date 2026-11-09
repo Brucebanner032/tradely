@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -709,350 +709,341 @@
       </section>
 
 
-      <!-- =================================================
-           WALLET
-           ================================================= -->
 
-      <section
-        id="page-wallet"
-        class="page"
+<!-- =================================================
+     WALLET — CRYPTO EXCHANGE REDESIGN
+     ================================================= -->
+
+<section id="page-wallet" class="page tw-wallet">
+
+  <div class="page-heading tw-heading">
+    <div>
+      <span class="eyebrow">DIGITAL ASSETS</span>
+      <h1>My Wallet</h1>
+      <p>Manage your funds and crypto transactions.</p>
+    </div>
+
+    <div class="tw-live-status">
+      <span></span>
+      Wallet Active
+    </div>
+  </div>
+
+  <!-- BALANCE OVERVIEW -->
+  <div class="tw-wallet-hero">
+
+    <div class="tw-hero-content">
+      <span class="tw-muted">TOTAL AVAILABLE BALANCE</span>
+
+      <strong id="walletCash">$0.00</strong>
+
+      <p>Your Tradely account balance</p>
+
+      <div class="tw-hero-tags">
+        <span>USD BALANCE</span>
+        <span>USDT DEPOSITS</span>
+      </div>
+    </div>
+
+    <div class="tw-hero-decoration">
+      <div class="tw-orbit tw-orbit-one"></div>
+      <div class="tw-orbit tw-orbit-two"></div>
+      <div class="tw-main-coin">₮</div>
+    </div>
+
+  </div>
+
+  <!-- ASSET OVERVIEW -->
+  <div class="tw-section-heading">
+    <div>
+      <span class="eyebrow">YOUR ASSETS</span>
+      <h2>Supported Assets</h2>
+    </div>
+
+    <span class="tw-count">01 ASSET</span>
+  </div>
+
+  <div class="tw-assets-grid">
+
+    <div class="tw-asset-card">
+
+      <div class="tw-asset-top">
+
+        <div class="tw-asset-icon">₮</div>
+
+        <div class="tw-asset-name">
+          <strong>Tether</strong>
+          <small>USDT · Stablecoin</small>
+        </div>
+
+        <span class="tw-supported">Supported</span>
+
+      </div>
+
+      <div class="tw-asset-bottom">
+        <span>Deposit currency</span>
+        <strong>USDT</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- WALLET OPERATIONS -->
+  <div class="tw-section-heading">
+    <div>
+      <span class="eyebrow">WALLET MANAGEMENT</span>
+      <h2>Transactions</h2>
+    </div>
+  </div>
+
+  <div class="wallet-layout tw-wallet-layout">
+
+    <!-- DEPOSIT PANEL -->
+    <div class="wallet-card tw-panel">
+
+      <div class="wallet-card-heading tw-card-heading">
+
+        <div>
+          <span class="eyebrow">ADD FUNDS</span>
+          <h2>Deposit USDT</h2>
+        </div>
+
+        <div class="tw-panel-icon">↓</div>
+
+      </div>
+
+      <div class="tw-network-notice">
+        <span>●</span>
+        Select your preferred blockchain network.
+      </div>
+
+
+<form id="depositForm">
+
+  <div class="form-group deposit-amount-group">
+
+    <div class="deposit-field-heading">
+      <label for="amount">Deposit Amount</label>
+      <span>USDT</span>
+    </div>
+
+    <div class="amount-input-wrap deposit-amount-input">
+      <span>$</span>
+      <input
+        id="amount"
+        type="number"
+        min="500"
+        step="0.01"
+        placeholder="500.00"
+        required
+      >
+    </div>
+
+    <div class="quick-amounts">
+      <button type="button" onclick="document.getElementById('amount').value='500'">500</button>
+      <button type="button" onclick="document.getElementById('amount').value='1000'">1,000</button>
+      <button type="button" onclick="document.getElementById('amount').value='2500'">2,500</button>
+      <button type="button" onclick="document.getElementById('amount').value='5000'">5,000</button>
+    </div>
+
+    <small class="deposit-minimum">
+      Minimum deposit: <strong>500 USDT</strong>
+    </small>
+
+  </div>
+
+  <div class="form-group deposit-network-group">
+
+    <div class="deposit-field-heading">
+      <label>Deposit Network</label>
+      <span>USDT</span>
+    </div>
+
+    <select
+      id="depositNetwork"
+      required
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <option value="TRC20">USDT — TRC20</option>
+      <option value="BEP20">USDT — BEP20</option>
+    </select>
+
+    <div class="network-choice-grid">
+
+      <button
+        type="button"
+        class="network-choice active"
+        data-network-choice="TRC20"
+        onclick="
+          document.getElementById('depositNetwork').value='TRC20';
+          document.querySelectorAll('.network-choice').forEach(function(el){el.classList.remove('active');});
+          this.classList.add('active');
+        "
+      >
+        <span class="network-logo trc-logo">T</span>
+        <span class="network-choice-content">
+          <strong>TRC20</strong>
+          <small>TRON Network</small>
+        </span>
+        <span class="network-check">✓</span>
+      </button>
+
+      <button
+        type="button"
+        class="network-choice"
+        data-network-choice="BEP20"
+        onclick="
+          document.getElementById('depositNetwork').value='BEP20';
+          document.querySelectorAll('.network-choice').forEach(function(el){el.classList.remove('active');});
+          this.classList.add('active');
+        "
+      >
+        <span class="network-logo bep-logo">B</span>
+        <span class="network-choice-content">
+          <strong>BEP20</strong>
+          <small>BNB Smart Chain</small>
+        </span>
+        <span class="network-check">✓</span>
+      </button>
+
+    </div>
+  </div>
+
+  <div class="deposit-security-note">
+    <span class="deposit-security-icon">✓</span>
+    <div>
+      <strong>USDT deposit</strong>
+      <span>
+        Make sure the selected network matches the network
+        you use when sending USDT.
+      </span>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="primary-button full-width deposit-continue-button"
+  >
+    Continue Deposit
+    <span>→</span>
+  </button>
+
+  <p id="walletMessage" class="form-message"></p>
+
+</form>
+
+      <!-- PAYMENT DETAILS -->
+      <div
+        id="depositDetails"
+        class="deposit-details hidden tw-payment-details"
       >
 
-        <div class="page-heading">
+        <div class="deposit-detail-header">
 
           <div>
-            <span class="eyebrow">WALLET</span>
-            <h1>Your Wallet</h1>
-            <p>Manage your Tradely USD balance.</p>
+            <span class="eyebrow">PAYMENT DETAILS</span>
+            <h3>Send USDT</h3>
+          </div>
+
+          <span
+            id="depositStatus"
+            class="status-badge pending"
+          >
+            Pending
+          </span>
+
+        </div>
+
+        <div class="deposit-info-grid">
+
+          <div class="deposit-info-box">
+
+            <span>Network</span>
+
+            <strong id="depositNetworkDisplay">
+              TRC20
+            </strong>
+
+          </div>
+
+          <div class="deposit-info-box">
+
+            <span>Amount</span>
+
+            <strong id="depositAmountDisplay">
+              $0.00
+            </strong>
+
           </div>
 
         </div>
 
-
-        <div class="wallet-balance-card">
+        <div class="deposit-address-box">
 
           <div>
+            <span>Deposit Address</span>
 
-            <span>Available Balance</span>
-
-            <strong id="walletCash">$0.00</strong>
-
+            <strong id="depositAddress">—</strong>
           </div>
 
-          <div class="wallet-balance-icon">
-            $
-          </div>
+          <button
+            type="button"
+            class="copy-button"
+            onclick="copyDepositAddress()"
+          >
+            Copy
+          </button>
 
         </div>
 
+        <div class="deposit-id-box">
 
-        <div class="wallet-layout">
+          <span>Deposit ID</span>
 
-          <!-- DEPOSIT -->
-
-          <div class="wallet-card deposit-wallet-card">
-
-            <div class="wallet-card-heading">
-
-              <div>
-                <span class="eyebrow">DEPOSIT</span>
-                <h2>Add Funds</h2>
-                <p class="deposit-heading-subtitle">
-                  Deposit USDT securely using your preferred network.
-                </p>
-              </div>
-
-            </div>
-
-
-            <form id="depositForm">
-
-              <div class="form-group deposit-amount-group">
-
-                <div class="deposit-field-heading">
-                  <label for="amount">Deposit Amount</label>
-                  <span>USDT</span>
-                </div>
-
-                <div class="amount-input-wrap deposit-amount-input">
-
-                  <span>$</span>
-
-                  <input
-                    id="amount"
-                    type="number"
-                    min="500"
-                    step="0.01"
-                    placeholder="500.00"
-                    required
-                  >
-
-                </div>
-
-                <div class="quick-amounts">
-
-                  <button
-                    type="button"
-                    onclick="document.getElementById('amount').value='500'"
-                  >
-                    500
-                  </button>
-
-                  <button
-                    type="button"
-                    onclick="document.getElementById('amount').value='1000'"
-                  >
-                    1,000
-                  </button>
-
-                  <button
-                    type="button"
-                    onclick="document.getElementById('amount').value='2500'"
-                  >
-                    2,500
-                  </button>
-
-                  <button
-                    type="button"
-                    onclick="document.getElementById('amount').value='5000'"
-                  >
-                    5,000
-                  </button>
-
-                </div>
-
-                <small class="deposit-minimum">
-                  Minimum deposit: <strong>500 USDT</strong>
-                </small>
-
-              </div>
-
-
-              <div class="form-group deposit-network-group">
-
-                <div class="deposit-field-heading">
-                  <label>Deposit Network</label>
-                  <span>USDT</span>
-                </div>
-
-                <!--
-                  The select remains in place so the existing app.js
-                  continues to work without modification.
-                -->
-
-                <select
-                  id="depositNetwork"
-                  required
-                  aria-hidden="true"
-                  tabindex="-1"
-                >
-
-                  <option value="TRC20">
-                    USDT — TRC20
-                  </option>
-
-                  <option value="BEP20">
-                    USDT — BEP20
-                  </option>
-
-                </select>
-
-
-                <div class="network-choice-grid">
-
-                  <button
-                    type="button"
-                    class="network-choice active"
-                    data-network-choice="TRC20"
-                    onclick="
-                      document.getElementById('depositNetwork').value='TRC20';
-                      document.querySelectorAll('.network-choice').forEach(function(el){el.classList.remove('active');});
-                      this.classList.add('active');
-                    "
-                  >
-
-                    <span class="network-logo trc-logo">T</span>
-
-                    <span class="network-choice-content">
-                      <strong>TRC20</strong>
-                      <small>TRON Network</small>
-                    </span>
-
-                    <span class="network-check">✓</span>
-
-                  </button>
-
-
-                  <button
-                    type="button"
-                    class="network-choice"
-                    data-network-choice="BEP20"
-                    onclick="
-                      document.getElementById('depositNetwork').value='BEP20';
-                      document.querySelectorAll('.network-choice').forEach(function(el){el.classList.remove('active');});
-                      this.classList.add('active');
-                    "
-                  >
-
-                    <span class="network-logo bep-logo">B</span>
-
-                    <span class="network-choice-content">
-                      <strong>BEP20</strong>
-                      <small>BNB Smart Chain</small>
-                    </span>
-
-                    <span class="network-check">✓</span>
-
-                  </button>
-
-                </div>
-
-              </div>
-
-
-              <div class="deposit-security-note">
-
-                <span class="deposit-security-icon">✓</span>
-
-                <div>
-                  <strong>USDT deposit</strong>
-                  <span>
-                    Make sure the selected network matches the network
-                    you use when sending USDT.
-                  </span>
-                </div>
-
-              </div>
-
-
-              <button
-                type="submit"
-                class="primary-button full-width deposit-continue-button"
-              >
-                Continue Deposit
-                <span>→</span>
-              </button>
-
-              <p
-                id="walletMessage"
-                class="form-message"
-              ></p>
-
-            </form>
-
-
-            <div
-              id="depositDetails"
-              class="deposit-details hidden"
-            >
-
-              <div class="deposit-detail-header">
-
-                <div>
-                  <span class="eyebrow">PAYMENT DETAILS</span>
-                  <h3>Send USDT</h3>
-                </div>
-
-                <span
-                  id="depositStatus"
-                  class="status-badge pending"
-                >
-                  Pending
-                </span>
-
-              </div>
-
-
-              <div class="deposit-info-grid">
-
-                <div class="deposit-info-box">
-
-                  <span>Network</span>
-
-                  <strong id="depositNetworkDisplay">
-                    TRC20
-                  </strong>
-
-                </div>
-
-
-                <div class="deposit-info-box">
-
-                  <span>Amount</span>
-
-                  <strong id="depositAmountDisplay">
-                    $0.00
-                  </strong>
-
-                </div>
-
-              </div>
-
-
-              <div class="deposit-address-box">
-
-                <div>
-
-                  <span>Deposit Address</span>
-
-                  <strong id="depositAddress">
-                    —
-                  </strong>
-
-                </div>
-
-                <button
-                  type="button"
-                  class="copy-button"
-                  onclick="copyDepositAddress()"
-                >
-                  Copy
-                </button>
-
-              </div>
-
-
-              <div class="deposit-id-box">
-
-                <span>Deposit ID</span>
-
-                <strong id="depositId">—</strong>
-
-              </div>
-
-              <p class="deposit-note">
-                Send the exact amount using the selected network.
-                Your deposit will be checked automatically.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <!-- HISTORY -->
-
-          <div class="wallet-card">
-
-            <div class="wallet-card-heading">
-
-              <div>
-                <span class="eyebrow">HISTORY</span>
-                <h2>Deposit History</h2>
-              </div>
-
-            </div>
-
-            <div
-              id="depositHistory"
-              class="deposit-history"
-            ></div>
-
-          </div>
+          <strong id="depositId">—</strong>
 
         </div>
 
-      </section>
+        <p class="deposit-note">
+          Send the exact amount using the selected network.
+          Your deposit will be checked automatically.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- TRANSACTION HISTORY -->
+    <div class="wallet-card tw-panel">
+
+      <div class="wallet-card-heading tw-card-heading">
+
+        <div>
+          <span class="eyebrow">RECENT ACTIVITY</span>
+          <h2>Transaction History</h2>
+        </div>
+
+        <div class="tw-panel-icon">↗</div>
+
+      </div>
+
+      <p class="tw-history-description">
+        Track your USDT deposits and payment statuses.
+      </p>
+
+      <div
+        id="depositHistory"
+        class="deposit-history"
+      ></div>
+
+    </div>
+
+  </div>
+
+</section>
+
 
 
       <!-- =================================================
